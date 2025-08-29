@@ -36,7 +36,7 @@ export function loginUser(req,res){
                         lastName : user.lastName,
                         email : user.email,
                         role : user.role
-                    },"kv secret 89!")
+                    },process.env.jwt_secret);
                     res.json({message: "Login successful",token : token});
                 }else{
                     res.status(401).json({error:"login Failed"});
