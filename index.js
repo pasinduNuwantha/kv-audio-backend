@@ -3,7 +3,11 @@ import bodyPArser from "body-parser";
 import mongoose from "mongoose";
 import userRouter from "./routers/userRouter.js";
 import productRouter from "./routers/productRouter.js";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const app = express()
 
@@ -29,7 +33,7 @@ app.use((req,res,next)=>{
 
 })
 
-let mongoUrl = "mongodb+srv://pasindu:<db_password>@cluster0.fk8fik1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+let mongoUrl = process.env.MONGO_URL;
 
 mongoose.connect(mongoUrl)
 
